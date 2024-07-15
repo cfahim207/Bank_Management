@@ -13,11 +13,10 @@ PyAutoGUI
 PyGetWindow
 PyMsgBox
 pyperclip
-pypiwin32
 PyRect
 PyScreeze
 pyttsx3
 pytweening
-pywin32==<version>; platform_system=="Windows"
+pywin32
 sqlparse
 tzdata
