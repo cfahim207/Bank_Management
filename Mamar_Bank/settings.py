@@ -14,7 +14,6 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-import dj_database_url
 import environ
 env = environ.Env()
 environ.Env.read_env()
@@ -25,8 +24,7 @@ environ.Env.read_env()
 
 
 # Your secret key
-SECRET_KEY = env("SECRET_KEY")
-# SECRET_KEY = 'django-insecure-vqiav%pjxc+tp&9$1l&&5g7fso^^lg^i329)6_!r_3sp1vurd0'
+SECRET_KEY = 'django-insecure-vqiav%pjxc+tp&9$1l&&5g7fso^^lg^i329)6_!r_3sp1vurd0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -99,11 +97,12 @@ WSGI_APPLICATION = 'Mamar_Bank.wsgi.application'
 #     }
 # }
 
+
 DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='postgresql://mamar_bank_hdaf_user:wutNuwRQmiKGerKGjJoc1JmztgkY6Tfr@dpg-cqaip1eehbks73b23r8g-a.oregon-postgres.render.com/mamar_bank_hdaf',
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -153,5 +152,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'cfahim207@gmail.com'
-EMAIL_HOST_PASSWORD = 'mthnsbbsxqzvmmhl'
+EMAIL_HOST_USER = env("EMAIL")
+EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
