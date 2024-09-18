@@ -13,8 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 import environ
+import os
 env = environ.Env()
 environ.Env.read_env()
 # Quick-start development settings - unsuitable for production
@@ -22,12 +23,18 @@ environ.Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 # Your secret key
 SECRET_KEY = 'django-insecure-vqiav%pjxc+tp&9$1l&&5g7fso^^lg^i329)6_!r_3sp1vurd0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+
+
+# Check if the PORT environment variable exists (on Render)
+
+
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://bank-management-m5sg.onrender.com','https://*.127.0.0.1']
@@ -81,22 +88,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Mamar_Bank.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-
-...
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': env("DB_NAME"),
-#         'USER': env("DB_USER"),
-#         'PASSWORD': env("DB_PASSWORD"),
-#         'HOST': env("DB_HOST"),
-#         'PORT': env("DB_PORT"),
-#     }
-# }
-
 
 DATABASES = {
     'default': {
@@ -104,7 +95,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
