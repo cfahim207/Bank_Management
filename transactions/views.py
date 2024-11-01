@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 from transactions.models import Transaction
-from .forms import DepositForm, WithdrawForm, LoanRequestForm
+from .forms import *
 from .models import DEPOSIT,WITHDRAWAL,LOAN_PAID,LOAN
 from django.http import HttpResponse
 from django.db.models import Sum

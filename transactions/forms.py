@@ -58,3 +58,9 @@ class WithdrawForm(TransactionForm):
             )
 
         return amount
+    
+class LoanRequestForm(TransactionForm):
+    def clean_amount(self):
+        amount = self.cleaned_data.get('amount')
+
+        return amount
